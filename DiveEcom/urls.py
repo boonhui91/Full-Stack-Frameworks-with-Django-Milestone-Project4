@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import trips.views
+import vendors.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('trips/', trips.views.index)
+    path('trips/', trips.views.index),
+    path('vendors/', vendors.views.index)
 ]
