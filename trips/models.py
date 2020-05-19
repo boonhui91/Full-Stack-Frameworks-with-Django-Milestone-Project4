@@ -28,15 +28,18 @@ class Trip(models.Model):
     location = models.CharField(blank=False, max_length=255)
     date = models.DateField(blank=False)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    # accommodation: models.CharField(blank=False, choices=Accom_type)
     accommodation = models.ForeignKey(Accom, on_delete=models.SET_NULL, null=True)
     vendors = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return 'DiveTrip: ' + self.location
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    firstName = models.CharField(blank=False, max_length=30)
+    lastName = models.CharField(blank=False, max_length=30)
 
     def __str__(self):
-        return self.location
+        return self.firstName + ' ' + self.lastName
+
 
