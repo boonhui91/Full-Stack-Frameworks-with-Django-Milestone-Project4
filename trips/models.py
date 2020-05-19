@@ -1,4 +1,6 @@
 from django.db import models
+from vendors.models import Vendor
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -28,6 +30,12 @@ class Trip(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     # accommodation: models.CharField(blank=False, choices=Accom_type)
     accommodation = models.ForeignKey(Accom, on_delete=models.SET_NULL, null=True)
+    vendors = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.location
