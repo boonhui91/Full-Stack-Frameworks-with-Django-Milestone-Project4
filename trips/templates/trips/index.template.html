@@ -26,11 +26,18 @@
         <img src="{{t.image}}" alt="Image not found" />
         <li>
             <a href="{% url 'update_trip_route' trip_id=t.id %}">Edit</a>
+            <a href="{% url 'delete_trip_route' trip_id=t.id %}">Delete</a>
         </li>
         <br>
-     
         {%endfor%}
     </ul>
-    
+
+<div>
+     <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="Submit"/>
+    </form>
+</div>
 </body>
 </html>

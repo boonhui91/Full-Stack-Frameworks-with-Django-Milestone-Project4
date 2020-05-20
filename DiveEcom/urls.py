@@ -21,8 +21,9 @@ import vendors.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('alltrips/', trips.views.index),
-    path('trips/create', trips.views.create_trip),
+    # path('alltrips/', trips.views.index),
+    path('alltrips/', trips.views.index_create_trip, name = 'index_trip_route'),
     path('trips/update/<trip_id>', trips.views.update_trip, name = 'update_trip_route'),
+    path('trips/delete/<trip_id>', trips.views.delete_trip, name = 'delete_trip_route'),
     path('vendors/', vendors.views.index)
 ]

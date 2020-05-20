@@ -7,10 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Delete book {{trip.location}}</h1>
+    <p>Are you sure?</p>
     <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p}}
-    <input type="Submit"/>
+        {% csrf_token %}
+        <input type="submit" value="Yes"/>
+        <a href="{% url 'index_trip_route' %}">No</a>
     </form>
 </body>
 </html>
