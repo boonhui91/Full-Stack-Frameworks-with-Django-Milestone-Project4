@@ -21,6 +21,6 @@ import vendors.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('trips/', trips.views.index),
+    path('alltrips/', trips.views.index),
     path('vendors/', vendors.views.index)
 ]
