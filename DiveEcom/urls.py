@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('alltrips/', trips.views.index),
+    path('trips/create', trips.views.create_trip),
     path('vendors/', vendors.views.index)
 ]
