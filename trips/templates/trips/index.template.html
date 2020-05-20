@@ -24,7 +24,11 @@
         <li>{{t.accommodation}}</li>
         <li>{{t.vendors}}</li>
         <img src="{{t.image}}" alt="Image not found" />
+        <li>
+            <a href="{% url 'update_trip_route' trip_id=t.id %}">Edit</a>
+        </li>
         <br>
+     
         {%endfor%}
     </ul>
     

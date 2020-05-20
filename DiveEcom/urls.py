@@ -23,5 +23,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('alltrips/', trips.views.index),
     path('trips/create', trips.views.create_trip),
+    path('trips/update/<trip_id>', trips.views.update_trip, name = 'update_trip_route'),
     path('vendors/', vendors.views.index)
 ]
