@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'pyuploadcare.dj',
     'trips',
     'vendors',
-    'useraccount'
+    'useraccount',
+    'home'
 ]
 
 MIDDLEWARE = [

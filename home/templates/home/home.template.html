@@ -1,0 +1,32 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Home</h1>
+    <p>
+        Home template
+    </p>
+
+    <ul>
+        {%for t in trips %}
+        <br>
+        <li>{{t.location}}</li>
+        <li>{{t.date}}</li>
+        <li>{{t.price}}</li>
+        <li>{{t.accommodation}}</li>
+        <li>{{t.vendors}}</li>
+        <img src="{{t.image}}" alt="Image not found" />
+
+        <br>
+        {%endfor%}
+    </ul>
+
+</body>
+</html>

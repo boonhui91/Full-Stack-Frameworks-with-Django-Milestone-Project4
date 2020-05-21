@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 import trips.views
 import vendors.views
+import home.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     path('alltrips/', trips.views.index_create_trip, name = 'index_trip_route'),
     path('trips/update/<trip_id>', trips.views.update_trip, name = 'update_trip_route'),
     path('trips/delete/<trip_id>', trips.views.delete_trip, name = 'delete_trip_route'),
-    path('vendors/', vendors.views.index)
+    path('vendors/', vendors.views.index),
+    path('home/', home.views.display_home)
 ]
