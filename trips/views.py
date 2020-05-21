@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from .models import Trip
 from .forms import TripForm
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 # def index(request):
@@ -9,8 +10,8 @@ from .forms import TripForm
 #         'trips':trips
 #     })
 
-
-def index_create_trip(request):
+@login_required
+def read_create_trip(request):
     # 2. if the update form is submitted
     trips = Trip.objects.all()
     if request.method == "POST":
@@ -18,7 +19,7 @@ def index_create_trip(request):
         create_form = TripForm(request.POST)
         if create_form.is_valid():
             create_form.save()
-            return redirect(reverse(index_create_trip))
+            return redirect(reverse(read_create_trip))
         else:
             return render(request, 'trips/index.template.html', {
                 "form": create_form,
@@ -38,7 +39,7 @@ def update_trip(request, trip_id):
         update_form = TripForm(request.POST, instance=updating_trip)
         if update_form.is_valid():
             update_form.save()
-            return redirect(reverse(index_create_trip))
+            return redirect(reverse(read_create_trip))
         else:
             return render(request, 'trips/update.template.html', {
                 "form": update_form
@@ -53,7 +54,7 @@ def delete_trip(request, trip_id):
     trip_to_delete = get_object_or_404(Trip, pk=trip_id)
     if request.method == 'POST':
         trip_to_delete.delete()
-        return redirect(index_create_trip)
+        return redirect(read_create_trip)
     else:
         return render(request, 'trips/delete.template.html', {
             "trip": trip_to_delete
