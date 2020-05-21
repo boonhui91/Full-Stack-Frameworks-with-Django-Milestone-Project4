@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'pyuploadcare.dj',
     'trips',
-    'vendors'
+    'vendors',
+    'useraccount'
 ]
 
 MIDDLEWARE = [

@@ -24,11 +24,11 @@ class Trip(models.Model):
     def __str__(self):
         return 'DiveTrip: ' + self.location
 
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    firstName = models.CharField(blank=False, max_length=30)
-    lastName = models.CharField(blank=False, max_length=30)
-    wishlist = models.ManyToManyField(Trip)
+# class Profile(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     firstName = models.CharField(blank=False, max_length=30)
+#     lastName = models.CharField(blank=False, max_length=30)
+#     wishlist = models.ManyToManyField(Trip)
 
-    def __str__(self):
-        return self.firstName + ' ' + self.lastName
+#     def __str__(self):
+#         return self.firstName + ' ' + self.lastName
