@@ -7,6 +7,10 @@
      <div class="card-body">
         Quantity: {{cart_item.qty}}
      </div>
+
+    <a class="btn btn-danger btn-sm" href="{% url 'delete_cart_route' trip_id=cart_item.id %}">Delete Item</a>
+    <a class="btn btn-danger btn-sm" href="{% url 'delete_qty_route' trip_id=cart_item.id %}">-</a>
+    <a class="btn btn-danger btn-sm" href="{% url 'add_qty_route' trip_id=cart_item.id %}">+</a>
 </div>
 {%endfor%}
 {%endblock%}

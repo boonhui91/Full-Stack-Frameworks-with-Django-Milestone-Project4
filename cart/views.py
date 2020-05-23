@@ -33,3 +33,30 @@ def view_cart(request):
     return render(request, 'cart/view.template.html',{
         'cart' : cart
     })
+
+
+def delete_item(request, trip_id):
+    cart = request.session.get(SHOPPING_CART)
+    if trip_id in cart:
+        del cart[trip_id]
+        # cart[trip_id]['qty'] -= 1
+        request.session[SHOPPING_CART] = cart
+
+    return redirect(reverse('view_cart_route'))
+
+
+def delete_qty(request, trip_id):
+    cart = request.session.get(SHOPPING_CART)
+    if trip_id in cart:
+        cart[trip_id]['qty'] -= 1
+        request.session[SHOPPING_CART] = cart
+
+    return redirect(reverse('view_cart_route'))
+
+def add_qty(request, trip_id):
+    cart = request.session.get(SHOPPING_CART)
+    if trip_id in cart:
+        cart[trip_id]['qty'] += 1
+        request.session[SHOPPING_CART] = cart
+
+    return redirect(reverse('view_cart_route'))
