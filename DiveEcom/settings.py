@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'trips',
     'vendors',
     'useraccount',
-    'home'
+    'home',
+    'cart'
 ]
 
 MIDDLEWARE = [
