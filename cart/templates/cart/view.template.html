@@ -12,5 +12,13 @@
     <a class="btn btn-danger btn-sm" href="{% url 'delete_qty_route' trip_id=cart_item.id %}">-</a>
     <a class="btn btn-danger btn-sm" href="{% url 'add_qty_route' trip_id=cart_item.id %}">+</a>
 </div>
+
+<p>
+        <form method="POST" action="{% url 'update_qty_route' trip_id=cart_item.id %}">
+        {%csrf_token%}
+        Quantity:<input name="qty" type="text" value="{{cart_item.qty}}" style="width:20px">
+        <input type="submit" class="btn btn-primary btn-sm" value="Update Quantity"/>
+        </form>
+    </p>
 {%endfor%}
 {%endblock%}
