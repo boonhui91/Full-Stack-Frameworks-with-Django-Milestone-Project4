@@ -4,8 +4,10 @@ from trips.models import Trip
 
 # Create your views here.
 
+SHOPPING_CART = "shopping_cart"
+
 def add_cart(request, trip_id):
-    cart = request.session.get('shopping_cart', {})
+    cart = request.session.get(SHOPPING_CART, {})
     # trip = get_object_or_404(Trip, pk=trip_id)
     trip = get_object_or_404(Trip, pk=trip_id)
 
@@ -16,14 +18,18 @@ def add_cart(request, trip_id):
             'location': trip.location,
             'qty': 1
         }
-
-        print('add new to cart')
-
     else:
         cart[trip_id]['qty'] += 1
-        print('add additional to cart')
+    request.session[SHOPPING_CART] = cart
 
-    request.session['shopping_cart'] = cart
+    return redirect(reverse('view_cart_route'))
 
-    return redirect(reverse('home_route'))
 
+
+
+def view_cart(request):
+    cart = request.session.get(SHOPPING_CART)
+
+    return render(request, 'cart/view.template.html',{
+        'cart' : cart
+    })

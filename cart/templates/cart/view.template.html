@@ -1,0 +1,12 @@
+{%extends 'base.template.html'%}
+
+{%block content %}
+{%for key, cart_item in cart.items %}
+<div class="card">
+    <div class="card-title">{{cart_item.location}}</div>
+     <div class="card-body">
+        Quantity: {{cart_item.qty}}
+     </div>
+</div>
+{%endfor%}
+{%endblock%}
