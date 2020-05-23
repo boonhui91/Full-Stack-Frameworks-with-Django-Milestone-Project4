@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.http import HttpResponseForbidden
 from trips.models import Trip
+import json
+import datetime
+from json import JSONEncoder
 
 # Create your views here.
 
@@ -16,7 +19,11 @@ def add_cart(request, trip_id):
         cart[trip_id] = {
             'id': trip_id,
             'location': trip.location,
-            'qty': 1
+            'qty': 1,
+            'date': str(trip.date),
+            'price': str(trip.price),
+            'image': str(trip.image)
+
         }
     else:
         cart[trip_id]['qty'] += 1
