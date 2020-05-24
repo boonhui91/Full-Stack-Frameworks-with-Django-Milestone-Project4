@@ -20,11 +20,13 @@
     <ul>
         {%for t in trips %}
         <br>
+        <li>{{t.name}}</li>
         <li>{{t.location}}</li>
         <li>{{t.date}}</li>
         <li>{{t.price}}</li>
         <li>{{t.accommodation}}</li>
         <li>{{t.vendors}}</li>
+        <li>{{t.desc}}</li>
         <img src="{{t.image}}" alt="Image not found" />
         <li>
             <a href="{% url 'update_trip_route' trip_id=t.id %}">Edit</a>

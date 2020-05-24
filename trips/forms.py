@@ -5,5 +5,5 @@ from pyuploadcare.dj.forms import ImageField
 class TripForm(forms.ModelForm):
     class Meta:
         model = Trip
-        fields = ('location', 'date', 'price', 'accommodation', 'vendors', 'image')
+        fields = ('name', 'location', 'date', 'price', 'accommodation', 'vendors', 'image', 'desc')
 
