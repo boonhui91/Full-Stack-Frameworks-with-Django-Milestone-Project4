@@ -14,31 +14,33 @@ def checkout(request):
     line_items = []
 
     cart = request.session.get(SHOPPING_CART, {})
+    if cart.items():
+        for id, trips in cart.items():
+            trips_from_db = get_object_or_404(Trip, pk=id)
 
-    for id, trips in cart.items():
-        trips_from_db = get_object_or_404(Trip, pk=id)
+            line_items.append({
+                'name': str(trips_from_db.location),
+                'amount': int(trips_from_db.price*100),
+                'currency': 'SGD',
+                'quantity': trips['qty']
+            })
 
-        line_items.append({
-            'name': str(trips_from_db.location),
-            'amount': int(trips_from_db.price*100),
-            'currency': 'SGD',
-            'quantity': trips['qty']
+        current_site = Site.objects.get_current()
+        domain = current_site.domain
+
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=line_items,
+            success_url=domain + reverse(checkout_success),
+            cancel_url=domain + reverse(checkout_cancelled)
+        )
+
+        return render(request, 'checkout/checkout.template.html',{
+            "session_id": session.id,
+            "public_key": settings.STRIPE_PUBLISHABLE_KEY
         })
-
-    current_site = Site.objects.get_current()
-    domain = current_site.domain
-
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=line_items,
-        success_url=domain + reverse(checkout_success),
-        cancel_url=domain + reverse(checkout_cancelled)
-    )
-
-    return render(request, 'checkout/checkout.template.html',{
-        "session_id": session.id,
-        "public_key": settings.STRIPE_PUBLISHABLE_KEY
-    })
+    else:
+        return HttpResponse('No Items in Cart')
 
 
 def checkout_success(request):
