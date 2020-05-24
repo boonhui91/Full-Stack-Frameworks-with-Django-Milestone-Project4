@@ -1,3 +1,4 @@
+{%load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,13 +8,47 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>DeepBlue</title>
   </head>
   <body>
+
+<nav>
+{% if request.user.is_authenticated %}
+  <div class="sidenav" id="mySidenav">
+  <a href="javascript:void(0)" class="closebtn nav-mobile" onclick="closeNav()">&times;</a>
+  <h3> {{request.user}} </h3>
+  <a href="#about">Profile</a>
+  <a href="#services">All Trips</a>
+  <a href="#clients">My Cart</a>
+    </div>
+    <span class='nav-mobile' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+{% else %}
+<div class="sidenav" id="mySidenav">
+  <a href="javascript:void(0)" class="closebtn nav-mobile" onclick="closeNav()">&times;</a>
+  <a href="#about">Profile</a>
+  <a href="#services">All Trips</a>
+  <a href="#clients">My Cart</a>
+    </div>
+    <span class='nav-mobile' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+{%endif%}
+<nav>
   {%block content%}
   {%endblock%}
 
+
+<!-- nav bar toggle -->
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

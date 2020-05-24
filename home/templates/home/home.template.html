@@ -1,11 +1,8 @@
 {% extends 'base.template.html' %}
 {%load static %}
 {%block content%}
-    <h1>Home</h1>
-    <p>
-        Home template
-    </p>
-
+  
+<div class='main'>
     <ul>
         {%for t in trips %}
         <br>
@@ -19,4 +16,5 @@
         <br>
         {%endfor%}
     </ul>
+</div>
 {%endblock%}
