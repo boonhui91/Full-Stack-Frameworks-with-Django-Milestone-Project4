@@ -2,19 +2,7 @@
 {%load static %}
 {%block content%}
   
-<div class='main'>
-    <ul>
-        {%for t in trips %}
-        <br>
-        <li>{{t.location}}</li>
-        <li>{{t.date}}</li>
-        <li>{{t.price}}</li>
-        <li>{{t.accommodation}}</li>
-        <li>{{t.vendors}}</li>
-        <img src="{{t.image}}" alt="Image not found" />
-
-        <br>
-        {%endfor%}
-    </ul>
+<div class='main' id='homepage'>
+  
 </div>
 {%endblock%}
