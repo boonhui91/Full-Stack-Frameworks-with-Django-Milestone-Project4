@@ -27,5 +27,6 @@ urlpatterns = [
     path('trips/delete/<trip_id>', trips.views.delete_trip, name = 'delete_trip_route'),
     path('vendors/', vendors.views.index),
     path('home/', home.views.display_home, name='home_route'),
-    path('cart/', include('cart.urls'))
+    path('cart/', include('cart.urls')),
+    path('checkout/', include('checkout.urls'))
 ]

@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'vendors',
     'useraccount',
     'home',
-    'cart'
+    'cart',
+    'checkout'
 ]
 
 MIDDLEWARE = [
@@ -166,3 +167,4 @@ UPLOADCARE = {
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+SIGNING_SECRET = os.environ.get("SIGNING_SECRET")
