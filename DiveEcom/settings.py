@@ -163,3 +163,6 @@ UPLOADCARE = {
     'pub_key': os.environ.get('UPLOADCARE_PUBLIC_KEY'),
     'secret': os.environ.get('UPLOADCARE_SECRET_KEY')
 }
+
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
