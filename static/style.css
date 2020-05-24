@@ -93,6 +93,11 @@
         display: block;
     }
 
+    .nav-mobile{
+        position: absolute;
+        z-index: 1;
+    }
+
     @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -106,6 +111,9 @@
     height: 100vh;
     background-image: url('images/boat.gif');
     background-size:cover;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
 }
 
 
