@@ -14,9 +14,17 @@
           <div class="card-body">
             <h4 class="card-title">{{t.name}}</h4>
             <p class="card-text">{{t.desc}}</p>
-            <p class="card-date">{{t.date}}</p>
-            <p class="card-text">${{t.price}}</p>
+            <p class="card-date font-italic font-weight-bold">Trip Date: {{t.date}}</p>
+            <p class="card-text font-italic font-weight-bold">Accomodation: {{t.accommodation}}</p>
+            <p class="card-text font-weight-bold" >${{t.price}}</p>
           </div>
+          
+            <button type="button" class="btn btn-outline-info trip-button" href='/'><a href="/">Add To Cart</a></button>
+          
+          
+            <button type="button" class="btn btn-outline-info trip-button"><a href="/">Add To Wishlist</a></button>
+          
+          
         </div>
         
       </div>

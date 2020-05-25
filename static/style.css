@@ -301,3 +301,9 @@
     left: 1px;
 }
 /* end of all trips card */
+
+
+.trip-button a {
+    color: black;
+    font-weight:bold;
+}
