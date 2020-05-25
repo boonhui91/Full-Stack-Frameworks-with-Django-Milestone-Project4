@@ -22,10 +22,18 @@ def add_cart(request, trip_id):
             'price': str(trip.price),
             'original_price': str(trip.price),
             'image': str(trip.image)
-
         }
     else:
         cart[trip_id]['qty'] += 1
+        latest_qty = cart[trip_id]['qty']
+        # get original price
+        original_price =float(cart[trip_id]['original_price'])
+        # convert last stored price from str to float
+        price_float = float(cart[trip_id]['price'])
+        # original price multiply by updated qty
+        updated_price = (original_price * latest_qty)
+        # update latest price
+        cart[trip_id]['price'] = str(updated_price)
     request.session[SHOPPING_CART] = cart
 
     return redirect(reverse('view_cart_route'))
@@ -35,9 +43,19 @@ def add_cart(request, trip_id):
 
 def view_cart(request):
     cart = request.session.get(SHOPPING_CART)
+    # calculate total cart cost
+    updated_total_cost = 0
+    for each in cart:
+        each_qty = cart[each]['qty']
+        each_cost = cart[each]['price']
+        updated_total_cost += float(each_cost)
+        
+    request.session[SHOPPING_CART] = cart
 
     return render(request, 'cart/view.template.html',{
-        'cart' : cart
+        'cart' : cart,
+        'updated_total_cost':updated_total_cost
+
     })
 
 

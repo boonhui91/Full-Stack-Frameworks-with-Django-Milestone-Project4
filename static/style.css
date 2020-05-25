@@ -307,3 +307,7 @@
     color: black;
     font-weight:bold;
 }
+
+#cart-summary {
+    margin-left: 300px;
+}
