@@ -308,6 +308,23 @@
     font-weight:bold;
 }
 
+.checkout-btn a {
+    color: black;
+    font-weight:bold;
+}
+
+
+/* empty cart */
+.empty-cart {
+    margin-left: 130px;
+    padding-top:50px;
+}
+@media only screen and (min-width: 768px) {
+.empty-cart {
+    margin-left: 300px;
+}
 #cart-summary {
     margin-left: 300px;
+}
+
 }

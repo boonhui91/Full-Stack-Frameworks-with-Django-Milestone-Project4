@@ -1,0 +1,8 @@
+{%extends 'base.template.html'%}
+
+{%block content %}
+<div class = 'empty-cart'>
+    <h3> Your Cart is empty </h3>
+     <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'all_trip_route' %}">Back to Shop</a></button>
+</div>
+{%endblock%}

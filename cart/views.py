@@ -43,21 +43,24 @@ def add_cart(request, trip_id):
 
 def view_cart(request):
     cart = request.session.get(SHOPPING_CART)
-    # calculate total cart cost
-    updated_total_cost = 0
-    for each in cart:
-        each_qty = cart[each]['qty']
-        each_cost = cart[each]['price']
-        updated_total_cost += float(each_cost)
-        
-    request.session[SHOPPING_CART] = cart
 
-    return render(request, 'cart/view.template.html',{
-        'cart' : cart,
-        'updated_total_cost':updated_total_cost
+    if cart:
+        # calculate total cart cost
+        updated_total_cost = 0
+        for each in cart:
+            each_qty = cart[each]['qty']
+            each_cost = cart[each]['price']
+            updated_total_cost += float(each_cost)
+            
+        request.session[SHOPPING_CART] = cart
 
-    })
+        return render(request, 'cart/viewcart.template.html',{
+            'cart' : cart,
+            'updated_total_cost':updated_total_cost
 
+        })
+    else:
+        return render(request, 'cart/emptycart.template.html')
 
 def delete_item(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
