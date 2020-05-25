@@ -5,23 +5,30 @@ from .forms import TripForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
-def group_required(arg_name):
-    def decorator(view):
-        def wrapper(request, *args, **kwargs):
-            group_id = kwargs.get(arg_name)
-            user = request.user
-            if group_id in user.groups.values_list('id', flat=True):
-                return view(request, *args, **kwargs)
-            else:
-                return redirect(reverse('home_route'))
-        return wrapper
-    return decorator
+# def group_required(arg_name):
+#     def decorator(view):
+#         def wrapper(request, *args, **kwargs):
+#             group_id = kwargs.get(arg_name)
+#             user = request.user
+#             if group_id in user.groups.values_list('id', flat=True):
+#                 return view(request, *args, **kwargs)
+#             else:
+#                 return redirect(reverse('home_route'))
+#         return wrapper
+#     return decorator
+
+
+def all_trip(request):
+    trips = Trip.objects.all()
+    return render(request, 'trips/alltrip.template.html', {
+            'trips':trips
+        })
+
 
 
 @login_required
-@group_required('vendor')
+# @group_required('vendor')
 def read_create_trip(request):
-    # 2. if the update form is submitted
     trips = Trip.objects.all()
     if request.method == "POST":
 
@@ -42,7 +49,7 @@ def read_create_trip(request):
         })
 
 @login_required
-@group_required('vendor')
+# @group_required('vendor')
 def update_trip(request, trip_id):
     updating_trip = get_object_or_404(Trip, pk=trip_id)
     if request.method == "POST":
@@ -61,7 +68,7 @@ def update_trip(request, trip_id):
         })
 
 @login_required
-@group_required('vendor')
+# @group_required('vendor')
 def delete_trip(request, trip_id):
     trip_to_delete = get_object_or_404(Trip, pk=trip_id)
     if request.method == 'POST':

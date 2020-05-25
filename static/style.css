@@ -214,3 +214,15 @@
 
 }
 
+.trips-card {
+margin-right: 80px;
+}
+
+.trips-card .row {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.trips-card .row > div[class*='col-'] {
+  display: flex;
+}
