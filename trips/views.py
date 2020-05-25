@@ -25,6 +25,15 @@ def all_trip(request):
         })
 
 
+def each_trip(request, trip_id):
+    trips = get_object_or_404(Trip, pk=trip_id)
+    
+    return render(request, 'trips/eachtrip.template.html', {
+        "trips": trips
+        })
+
+
+
 
 @login_required
 # @group_required('vendor')

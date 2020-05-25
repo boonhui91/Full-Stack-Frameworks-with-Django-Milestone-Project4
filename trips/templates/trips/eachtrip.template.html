@@ -1,0 +1,23 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+  
+
+<div class="card text-center">
+  <div class="card-header">
+    <h3>{{trips.name}}</h3>
+  </div>
+  <div class="card-body">
+  <img src="{{trips.image}}" alt="Trip Image" />
+    <h5 class="card-title">Location: {{trips.location}}</h5>
+    <p class="card-text">Date: {{trips.date}}</p>
+    <p class="card-text">Cost: ${{trips.price}}</p>
+    <p class="card-text font-italic trip-desc">{{trips.desc}}</p>
+  </div>
+    <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'add_to_cart_route' trip_id=trips.id %}">Add To Cart</a></button>
+    <button type="button" class="btn btn-outline-info trip-button"><a href="">Add To Wishlist</a></button>
+</div>
+
+
+{%endblock%}
+

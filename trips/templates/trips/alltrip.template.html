@@ -20,9 +20,8 @@
           </div>
           
             <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'add_to_cart_route' trip_id=t.id %}">Add To Cart</a></button>
-          
-          
             <button type="button" class="btn btn-outline-info trip-button"><a href="">Add To Wishlist</a></button>
+            <button type="button" class="btn btn-outline-info trip-button"><a href="{% url 'each_trip' trip_id=t.id %}">See Info</a></button>
           
           
         </div>
