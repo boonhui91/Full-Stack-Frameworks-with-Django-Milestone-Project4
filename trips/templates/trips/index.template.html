@@ -1,47 +1,53 @@
+{% extends 'base.template.html' %}
 {%load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+{%block content%}
+<!-- uploadcare -->
+{{form.media}}  
 
-    <!-- uploadcare -->
-    {{form.media}}  
-</head>
-<body id='trips'>
-    <h1>Trips</h1>
-    <p>
-        Trips template
-    </p>
-
-    <ul>
-        {%for t in trips %}
-        <br>
-        <li>{{t.name}}</li>
-        <li>{{t.location}}</li>
-        <li>{{t.date}}</li>
-        <li>{{t.price}}</li>
-        <li>{{t.accommodation}}</li>
-        <li>{{t.vendors}}</li>
-        <li>{{t.desc}}</li>
-        <img src="{{t.image}}" alt="Image not found" />
-        <li>
-            <a href="{% url 'update_trip_route' trip_id=t.id %}">Edit</a>
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+    {%for t in trips %}
+      <div class="carousel-item col-md-4 {% if forloop.first %} active{% endif %}">
+       
+        <div class="card">
+          <img class="card-img-top img-fluid" src="{{t.image}}" alt="Trip Image">
+          <div class="card-body alltrip-card-body">
+            <h4 class="card-title">{{t.name}}</h4>
+            <p class="card-text">{{t.desc}}</p>
+            <p class="card-date font-italic font-weight-bold">Trip Date: {{t.date}}</p>
+            <p class="card-text font-italic font-weight-bold">Accomodation: {{t.accommodation}}</p>
+            <p class="card-text font-weight-bold" >${{t.price}}</p>
+          </div>
+           <a href="{% url 'update_trip_route' trip_id=t.id %}">Edit</a>
             <a href="{% url 'delete_trip_route' trip_id=t.id %}">Delete</a>
-        </li>
-        <br>
-        {%endfor%}
-    </ul>
-
-<div>
-     <form method="POST">
+        </div>
+        <div>
+     
+</div>
+      </div>
+      {%endfor%}
+      
+    </div>
+    <div>
+    <h3>Create a new Trip</h3>
+        <form method="POST">
     {% csrf_token %}
     {{ form.as_p}}
     <input type="Submit"/>
     </form>
+    </div>
+    <a class="carousel-control-prev prev-vendor" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next next-vendor" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
-</body>
-</html>
+
+
+{%endblock%}
+

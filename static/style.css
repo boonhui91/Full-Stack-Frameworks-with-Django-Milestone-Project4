@@ -343,3 +343,6 @@
 }
 }
 
+.prev-vendor, .next-vendor {
+    max-height: 300px;
+}
