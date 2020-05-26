@@ -44,21 +44,15 @@ def checkout(request):
     else:
         return render(request, 'cart/emptycart.template.html')
 
-@login_required
 def checkout_success(request):
     # reset the shopping cart
     request.session['shopping_cart'] = {}
     return HttpResponse("Checkout successful")
 
-@login_required
 def checkout_cancelled(request):
     return redirect(reverse('view_cart_route'))
 
-@login_required
-def handle_checkout_session(session):
-    pass
-    
-@login_required
+
 @csrf_exempt
 def payment_completed(request):
   payload = request.body
@@ -86,3 +80,30 @@ def payment_completed(request):
   return HttpResponse(status=200)
 
 
+def handle_checkout_session(session):
+    # print(session)
+
+    # txn_id = session["id"]  #txn id
+    # products_info = session["display_items"][1]["amount"]
+    # amount = 0
+    # x = 0
+    # productcount = len(session["display_items"])
+    # check = session["display_items"][x]["amount"]
+
+    # while check:
+    #     amount += session["display_items"][x]["amount"]
+    #     x = x + 1
+    # return amount, x
+
+
+    # for i in range(0, productcount-1):
+    #     amount += int(session["display_items"][x]["amount"])
+    #     x = x + 1
+    # return amount, x
+
+    # print(session)
+    # print(txn_id)
+    # # print(products_info)
+    # print(productcount)
+    # print(amount)
+    print(session)
