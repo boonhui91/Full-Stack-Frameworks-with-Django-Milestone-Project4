@@ -40,7 +40,7 @@ def checkout(request):
             "public_key": settings.STRIPE_PUBLISHABLE_KEY
         })
     else:
-        return HttpResponse('No Items in Cart')
+        return render(request, 'cart/emptycart.template.html')
 
 
 def checkout_success(request):
