@@ -346,3 +346,7 @@
 .prev-vendor, .next-vendor {
     max-height: 300px;
 }
+
+.brand-logo {
+    padding-bottom: 20px;
+}

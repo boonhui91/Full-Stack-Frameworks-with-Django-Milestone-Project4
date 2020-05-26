@@ -18,6 +18,9 @@
     <header>
     {% if request.user.is_authenticated %}
     <div class="sidenav" id="mySidenav">
+    <a href="/">
+    <img class="brand-logo" src="{% static 'images/deepblue-logo.png'%}" alt="Logo">
+    </a>
     <a href="javascript:void(0)" class="closebtn nav-mobile" onclick="closeNav()">&times;</a>
     <h3> {{request.user}} </h3>
     <a href="/">Home</a>
@@ -36,6 +39,9 @@
 
     {% else %}
     <div class="sidenav" id="mySidenav">
+    <a href="/">
+    <img class="brand-logo" src="{% static 'images/deepblue-logo.png'%}" alt="Logo">
+    </a>
     <a href="javascript:void(0)" class="closebtn nav-mobile" onclick="closeNav()">&times;</a>
     <a href="/">Home</a>
     <a href="/trips">All Trips</a>
