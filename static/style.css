@@ -245,6 +245,16 @@
     visibility: visible;
   }
 
+  .img-fluid{
+    min-height: 250px;
+    max-height: 250px;
+}
+
+.alltrip-card-body {
+    min-height: 380px;
+    max-height: 380px;
+}
+
   /* left or forward direction */
   .active.carousel-item-left + .carousel-item-next.carousel-item-left,
   .carousel-item-next.carousel-item-left + .carousel-item,
