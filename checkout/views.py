@@ -47,10 +47,10 @@ def checkout(request):
 def checkout_success(request):
     # reset the shopping cart
     request.session['shopping_cart'] = {}
-    return HttpResponse("Checkout successful")
+    return redirect(reverse('home_route'))
 
 def checkout_cancelled(request):
-    return redirect(reverse('view_cart_route'))
+    return render(request, 'cart/emptycart.template.html')
 
 
 @csrf_exempt
