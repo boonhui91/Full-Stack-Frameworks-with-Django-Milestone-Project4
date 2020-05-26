@@ -23,6 +23,9 @@
     <a href="/">Home</a>
     <a href="/trips">All Trips</a>
     <a href="/cart/">My Cart</a>
+    {% if vendor_status %}
+    <a href="/cart/">Vendor</a>
+    {%endif%}
     <a href="/accounts/logout">Log Out</a>
     <form class="form-inline" method="GET" action="{% url 'search_route' %}">
         <input class="form-control mr-sm-2" id="allsearch-form" type="search" placeholder="Trip Name, Location" aria-label="Search" name="search" required>
@@ -37,7 +40,7 @@
     <a href="/">Home</a>
     <a href="/trips">All Trips</a>
     <a href="/accounts/login">Log In</a>
-    <a href="/accounts/signup">Register</a>
+    <a href="/accounts/signup">Register </a>
         </div>
         <span class='nav-mobile' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     {%endif%}
