@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from django.http import HttpResponseForbidden
 from .models import Trip
-from .forms import TripForm
+from .forms import TripForm, SearchForm
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Q
 
 
 # def group_required(arg_name):
@@ -87,3 +88,30 @@ def delete_trip(request, trip_id):
         return render(request, 'trips/delete.template.html', {
             "trip": trip_to_delete
         })
+
+
+def search(request):
+    trips = Trip.objects.all()
+
+    search_form = SearchForm(request.GET)
+
+    # always true
+    queries = ~Q(pk__in=[])
+
+    if request.GET:
+
+        if 'search' in request.GET and request.GET['search']:
+            queries = queries & (Q(name__icontains=request.GET['search']) | Q(location__icontains=request.GET['search']))
+
+    trips = trips.filter(queries)
+
+    if trips:
+        search_result = True
+    
+    else:
+        search_result = False
+
+    return render(request, 'trips/search.template.html', {
+                'trips':trips,
+                'search_result':search_result
+                })

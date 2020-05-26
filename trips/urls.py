@@ -8,4 +8,5 @@ urlpatterns = [
     path('update/<trip_id>', trips.views.update_trip, name = 'update_trip_route'),
     path('delete/<trip_id>', trips.views.delete_trip, name = 'delete_trip_route'),
     path('eachtrip/<trip_id>', trips.views.each_trip, name = 'each_trip'),
+    path('search', trips.views.search, name = 'search_route'),
 ]

@@ -24,8 +24,8 @@
     <a href="/trips">All Trips</a>
     <a href="/cart/">My Cart</a>
     <a href="/accounts/logout">Log Out</a>
-    <form class="form-inline " >
-        <input class="form-control mr-sm-2" id="allsearch-form" type="search" placeholder="Search" aria-label="Search" name="search" required>
+    <form class="form-inline" method="GET" action="{% url 'search_route' %}">
+        <input class="form-control mr-sm-2" id="allsearch-form" type="search" placeholder="Trip Name, Location" aria-label="Search" name="search" required>
         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
     </form>
         </div>
@@ -46,17 +46,6 @@
   {%endblock%}
 </div>
 
-<!-- nav bar toggle -->
-<!-- <script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-
-</script> -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

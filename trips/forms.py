@@ -7,3 +7,6 @@ class TripForm(forms.ModelForm):
         model = Trip
         fields = ('name', 'location', 'date', 'price', 'accommodation', 'vendors', 'image', 'desc')
 
+
+class SearchForm(forms.Form):
+    search = forms.CharField(required=True)

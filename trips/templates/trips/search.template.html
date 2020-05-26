@@ -1,0 +1,41 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+  
+{% if search_result %}
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+    {%for t in trips %}
+      <div class="carousel-item col-md-4 {% if forloop.first %} active{% endif %}">
+       
+        <div class="card">
+          <img class="card-img-top img-fluid" src="{{t.image}}" alt="Trip Image">
+          <div class="card-body">
+            <h4 class="card-title">{{t.name}}</h4>
+            <p class="card-text">{{t.desc}}</p>
+            <p class="card-date font-italic font-weight-bold">Trip Date: {{t.date}}</p>
+            <p class="card-text font-italic font-weight-bold">Accomodation: {{t.accommodation}}</p>
+            <p class="card-text font-weight-bold" >${{t.price}}</p>
+          </div>
+          
+            <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'add_to_cart_route' trip_id=t.id %}">Add To Cart</a></button>
+            <button type="button" class="btn btn-outline-info trip-button"><a href="">Add To Wishlist</a></button>
+            <button type="button" class="btn btn-outline-info trip-button"><a href="{% url 'each_trip' trip_id=t.id %}">See Info</a></button>
+          
+        </div>
+        
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<div class='empty-cart'>
+    <h3> No search result found </h3>
+</div>
+{% endif %}
+{%endblock%}
+
