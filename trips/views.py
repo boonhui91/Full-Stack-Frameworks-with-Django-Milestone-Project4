@@ -34,8 +34,7 @@ def each_trip(request, trip_id):
         })
 
 
-
-
+# for vendor access
 @login_required
 # @group_required('vendor')
 def read_create_trip(request):

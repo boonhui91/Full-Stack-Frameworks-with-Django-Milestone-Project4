@@ -14,8 +14,10 @@
     <p class="card-text">Cost: ${{trips.price}}</p>
     <p class="card-text font-italic trip-desc">{{trips.desc}}</p>
   </div>
+  {% if request.user.is_authenticated %}
     <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'add_to_cart_route' trip_id=trips.id %}">Add To Cart</a></button>
     <button type="button" class="btn btn-outline-info trip-button"><a href="">Add To Wishlist</a></button>
+   {%endif%}
 </div>
 
 

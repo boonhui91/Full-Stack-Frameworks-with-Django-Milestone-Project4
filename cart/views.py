@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.http import HttpResponseForbidden
 from trips.models import Trip
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 # Create your views here.
 
 SHOPPING_CART = "shopping_cart"
 
+@login_required
 def add_cart(request, trip_id):
     cart = request.session.get(SHOPPING_CART, {})
     # trip = get_object_or_404(Trip, pk=trip_id)
@@ -40,7 +42,7 @@ def add_cart(request, trip_id):
 
 
 
-
+@login_required
 def view_cart(request):
     cart = request.session.get(SHOPPING_CART)
 
@@ -62,6 +64,8 @@ def view_cart(request):
     else:
         return render(request, 'cart/emptycart.template.html')
 
+
+@login_required
 def delete_item(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
     if trip_id in cart:
@@ -72,6 +76,7 @@ def delete_item(request, trip_id):
     return redirect(reverse('view_cart_route'))
 
 
+@login_required
 def delete_qty(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
     if trip_id in cart:
@@ -96,6 +101,8 @@ def delete_qty(request, trip_id):
 
     return redirect(reverse('view_cart_route'))
 
+
+@login_required
 def add_qty(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
     if trip_id in cart:
@@ -113,7 +120,8 @@ def add_qty(request, trip_id):
         request.session[SHOPPING_CART] = cart
 
     return redirect(reverse('view_cart_route'))
-    
+
+@login_required
 def update_quantity(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
     if trip_id in cart:

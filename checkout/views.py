@@ -3,11 +3,13 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 from trips.models import Trip
+from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
-# Create your views here.
+
 
 SHOPPING_CART = "shopping_cart"
 
+@login_required
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -42,20 +44,21 @@ def checkout(request):
     else:
         return render(request, 'cart/emptycart.template.html')
 
-
+@login_required
 def checkout_success(request):
     # reset the shopping cart
     request.session['shopping_cart'] = {}
     return HttpResponse("Checkout successful")
 
-
+@login_required
 def checkout_cancelled(request):
     return redirect(reverse('view_cart_route'))
 
-
+@login_required
 def handle_checkout_session(session):
     pass
-
+    
+@login_required
 @csrf_exempt
 def payment_completed(request):
   payload = request.body
