@@ -22,6 +22,8 @@
           </div>
             <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'add_to_cart_route' trip_id=wishlist.id %}">Add To Cart</a></button>
             <button type="button" class="btn btn-outline-info trip-button"><a href="{% url 'each_trip' trip_id=wishlist.id %}">See Info</a></button>
+            <button type="button" class="btn btn-outline-info trip-button"><a href="{% url 'delete_wishlist' trip_id=wishlist.id %}">Delete from Wishlist</a></button>
+
         </div>
         
       </div>

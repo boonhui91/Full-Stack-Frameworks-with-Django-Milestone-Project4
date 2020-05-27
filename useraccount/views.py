@@ -22,7 +22,13 @@ def viewwishlist(request):
         'wishlist':wishlist
         })
 
+@login_required
+def deletewishlist(request, trip_id):
+    profile = Profile.objects.get(user=request.user)
+    wishlist_trip = Trip.objects.get(pk=trip_id)
+    profile.wishlist.remove(wishlist_trip)
 
+    return redirect(reverse('home_route'))
 
 @login_required
 def order_history(request):
