@@ -1,0 +1,1 @@
+web: gunicorn DiveEcom.wsgi:application
