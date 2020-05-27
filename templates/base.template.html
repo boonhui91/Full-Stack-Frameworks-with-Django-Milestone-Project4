@@ -22,7 +22,21 @@
     <img class="brand-logo" src="{% static 'images/deepblue-logo.png'%}" alt="Logo">
     </a>
     <a href="javascript:void(0)" class="closebtn nav-mobile" onclick="closeNav()">&times;</a>
-    <h3> {{request.user}} </h3>
+
+    <div class="row">
+  <div class="column user-displayname">
+    <h3> 
+    {{request.user}} 
+    </h3>
+  </div>
+  <div class="column">
+    <a  class="inline-block" href="/profile">
+    <img class='profile-user-photo' src="{% static 'images/user.png'%}" alt="Logo">
+    </a>
+  </div>
+  </div>
+
+
     <a href="/">Home</a>
     <a href="/trips">All Trips</a>
     <a href="/cart/">My Cart</a>

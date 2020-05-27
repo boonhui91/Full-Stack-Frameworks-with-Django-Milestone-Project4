@@ -350,3 +350,16 @@
 .brand-logo {
     padding-bottom: 20px;
 }
+
+.inline-block {
+   display: inline-block;
+}
+
+.user-displayname {
+    padding-left: 25px;
+}
+
+.profile-user-photo {
+    max-height: 30px;
+
+}
