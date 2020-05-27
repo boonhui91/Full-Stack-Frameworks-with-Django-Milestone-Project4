@@ -1,0 +1,42 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+
+
+
+
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner row w-100 mx-auto">
+{% for wishlist in wishlist %}
+<div class="carousel-item col-md-4 {% if forloop.first %} active{% endif %}">
+       
+        <div class="card">
+          <img class="card-img-top img-fluid" src="{{wishlist.image}}" alt="Trip Image">
+          <div class="card-body alltrip-card-body">
+            <h4 class="card-title">{{wishlist.name}}</h4>
+            <p class="card-text">{{wishlist.desc}}</p>
+            <p class="card-date font-italic font-weight-bold">Trip Date: {{wishlist.date}}</p>
+            <p class="card-text font-italic font-weight-bold">Accomodation: {{wishlist.accommodation}}</p>
+            <p class="card-text font-weight-bold" >${{wishlist.price}}</p>
+          </div>
+            <button type="button" class="btn btn-outline-info trip-button" ><a href="{% url 'add_to_cart_route' trip_id=wishlist.id %}">Add To Cart</a></button>
+            <button type="button" class="btn btn-outline-info trip-button"><a href="{% url 'each_trip' trip_id=wishlist.id %}">See Info</a></button>
+        </div>
+        
+      </div>
+{% endfor %}
+
+</div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+{%endblock%}
+

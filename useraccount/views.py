@@ -6,21 +6,23 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def addwishlist(request, trip_id):
-    # Profile = get_object_or_404(Trip, pk=trip_id)
-    # Profile.wishlist.wishlist.add()
     profile = Profile.objects.get(user=request.user)
     wishlist_trip = Trip.objects.get(pk=trip_id)
-
-    # profile.wishlist.objects.all()   #get all the wishlist in profile (to read) (maybe no need .object)
-
     profile.wishlist.add(wishlist_trip)
-    # profile.wishlist.save()
-    # request.user.wishlist.all(wishlist_trip)
-    # userwishlist = Profile.wishlist(wishlist = wishlist_trip)
-    # userwishlist.save()
-    print(wishlist_trip)
-    
+
     return redirect(reverse('home_route'))
+
+
+@login_required
+def viewwishlist(request):
+    profile = Profile.objects.get(user=request.user)
+    wishlist = profile.wishlist.all()
+
+    return render(request, 'useraccount/wishlist.template.html', {
+        'wishlist':wishlist
+        })
+
+
 
 @login_required
 def order_history(request):
