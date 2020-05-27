@@ -1,0 +1,18 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+
+<div>
+<h1 class='empty-cart'>Order History</h1>
+{% for orders in orders %}
+<div class="card w-75">
+  <div class="card-body empty-cart">
+    <h5 class="card-title">Transaction ID : {{orders.transaction_id}}</h5>
+    <p class="card-text">${{orders.total_cost}}</p>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+{%endblock%}
+

@@ -105,7 +105,6 @@ def handle_checkout_session(session, request):
 
     # assign to user profile
     id = session["client_reference_id"]
-    # userid = get_object_or_404(pk=id)
     profile = Profile.objects.get(user=id)
     profile.orders.add(orders)
 

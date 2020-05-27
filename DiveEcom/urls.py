@@ -32,4 +32,6 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
     path('addwishlist/<trip_id>', useraccount.views.addwishlist, name='add_wishlist'),
+    # path('history/', useraccount.views.order_history, name='history'),
+    path('profile/', include('useraccount.urls')),
 ]
