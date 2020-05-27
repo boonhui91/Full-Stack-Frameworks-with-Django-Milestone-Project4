@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 from trips.models import Trip
+from useraccount.models import Order
 from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
 
@@ -75,12 +76,12 @@ def payment_completed(request):
     session = event['data']['object']
 
     # Fulfill the purchase...
-    handle_checkout_session(session)
+    handle_checkout_session(session , request)
 
   return HttpResponse(status=200)
 
 
-def handle_checkout_session(session):
+def handle_checkout_session(session, request):
     # get stripe transaction ID
     txn_id = session["id"]
     # get number of different trips added
@@ -91,7 +92,19 @@ def handle_checkout_session(session):
     for item in session["display_items"]:
         cost_price_total = item["amount"]
         total_qty = item["quantity"]
-        total_cost = total_cost + (cost_price_total * total_qty)/100
+        total_cost = str(total_cost + (cost_price_total * total_qty)/100)
+
+
+    # add to user orders
+    # orders = Orders.transaction_id.txn_id
+    # profile = Orders.objects.get(user=request.user)
+    orders = Order.objects.create(transaction_id = txn_id, total_cost = total_cost )
+    # orders.transaction_id.add(txn_id)
+    # orders.total_cost.add(total_cost)
+    # orders = Order.objects.create(total_cost = total_cost )
+
+    orders.save()
+
 
 
     print(txn_id)

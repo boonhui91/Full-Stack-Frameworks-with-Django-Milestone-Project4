@@ -5,9 +5,9 @@ from trips.models import Trip
 # Create your models here.
 
 
-class Orders(models.Model):
+class Order(models.Model):
     transaction_id = models.CharField(blank=False, max_length=100)
-    total_cost = models.DecimalField(max_digits=10, decimal_places=2)
+    total_cost = models.CharField(blank=False, max_length=100)
 
     def __str__(self):
         return self.transaction_id
@@ -16,6 +16,6 @@ class Orders(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     wishlist = models.ManyToManyField(Trip)
-    orders = models.ForeignKey(Orders, on_delete=models.SET_NULL, null=True)
+    orders = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
