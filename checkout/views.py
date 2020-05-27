@@ -81,29 +81,19 @@ def payment_completed(request):
 
 
 def handle_checkout_session(session):
-    # print(session)
-
-    # txn_id = session["id"]  #txn id
-    # products_info = session["display_items"][1]["amount"]
-    # amount = 0
-    # x = 0
-    # productcount = len(session["display_items"])
-    # check = session["display_items"][x]["amount"]
-
-    # while check:
-    #     amount += session["display_items"][x]["amount"]
-    #     x = x + 1
-    # return amount, x
+    # get stripe transaction ID
+    txn_id = session["id"]
+    # get number of different trips added
+    productcount = len(session["display_items"])
+ 
+    # get transaction total cost
+    total_cost = 0
+    for item in session["display_items"]:
+        cost_price_total = item["amount"]
+        total_qty = item["quantity"]
+        total_cost = total_cost + (cost_price_total * total_qty)/100
 
 
-    # for i in range(0, productcount-1):
-    #     amount += int(session["display_items"][x]["amount"])
-    #     x = x + 1
-    # return amount, x
-
-    # print(session)
-    # print(txn_id)
-    # # print(products_info)
-    # print(productcount)
-    # print(amount)
-    print(session)
+    print(txn_id)
+    print(productcount)
+    print(total_cost)

@@ -6,19 +6,6 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Q
 
 
-# def group_required(arg_name):
-#     def decorator(view):
-#         def wrapper(request, *args, **kwargs):
-#             group_id = kwargs.get(arg_name)
-#             user = request.user
-#             if group_id in user.groups.values_list('id', flat=True):
-#                 return view(request, *args, **kwargs)
-#             else:
-#                 return redirect(reverse('home_route'))
-#         return wrapper
-#     return decorator
-
-
 def all_trip(request):
     trips = Trip.objects.all()
     return render(request, 'trips/alltrip.template.html', {
@@ -36,7 +23,6 @@ def each_trip(request, trip_id):
 
 # for vendor access
 @login_required
-# @group_required('vendor')
 def read_create_trip(request):
     if request.user.groups.filter(name='vendor').exists():
         trips = Trip.objects.all()
@@ -61,7 +47,6 @@ def read_create_trip(request):
         return redirect(reverse('home_route'))
 
 @login_required
-# @group_required('vendor')
 def update_trip(request, trip_id):
     if request.user.groups.filter(name='vendor').exists():
         updating_trip = get_object_or_404(Trip, pk=trip_id)
@@ -83,7 +68,6 @@ def update_trip(request, trip_id):
         return redirect(reverse('home_route'))
 
 @login_required
-# @group_required('vendor')
 def delete_trip(request, trip_id):
     if request.user.groups.filter(name='vendor').exists():
         trip_to_delete = get_object_or_404(Trip, pk=trip_id)

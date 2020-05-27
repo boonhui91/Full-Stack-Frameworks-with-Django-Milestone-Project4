@@ -18,6 +18,7 @@ from django.urls import path, include
 import trips.views
 import vendors.views
 import home.views
+import useraccount.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +30,6 @@ urlpatterns = [
     path('vendors/', trips.views.read_create_trip, name = 'index_trip_route'),
     path('', home.views.display_home, name='home_route'),
     path('cart/', include('cart.urls')),
-    path('checkout/', include('checkout.urls'))
+    path('checkout/', include('checkout.urls')),
+    path('addwishlist/<trip_id>', useraccount.views.addwishlist, name='add_wishlist'),
 ]
