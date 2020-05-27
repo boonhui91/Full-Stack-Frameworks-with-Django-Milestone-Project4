@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 from trips.models import Trip
-from useraccount.models import Order
+from useraccount.models import Order, Profile
 from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
 
@@ -25,7 +25,8 @@ def checkout(request):
                 'name': str(trips_from_db.location),
                 'amount': int(trips_from_db.price*100),
                 'currency': 'SGD',
-                'quantity': trips['qty']
+                'quantity': trips['qty'],
+             
             })
 
         current_site = Site.objects.get_current()
@@ -35,7 +36,8 @@ def checkout(request):
             payment_method_types=['card'],
             line_items=line_items,
             success_url=domain + reverse(checkout_success),
-            cancel_url=domain + reverse(checkout_cancelled)
+            cancel_url=domain + reverse(checkout_cancelled),
+            client_reference_id =request.user.id
         )
 
         return render(request, 'checkout/checkout.template.html',{
@@ -81,8 +83,10 @@ def payment_completed(request):
   return HttpResponse(status=200)
 
 
+
 def handle_checkout_session(session, request):
     # get stripe transaction ID
+    print(session)
     txn_id = session["id"]
     # get number of different trips added
     productcount = len(session["display_items"])
@@ -92,21 +96,21 @@ def handle_checkout_session(session, request):
     for item in session["display_items"]:
         cost_price_total = item["amount"]
         total_qty = item["quantity"]
-        total_cost = str(total_cost + (cost_price_total * total_qty)/100)
+        total_cost = total_cost + (cost_price_total * total_qty)/100
 
 
-    # add to user orders
-    # orders = Orders.transaction_id.txn_id
-    # profile = Orders.objects.get(user=request.user)
+    # saving orders
     orders = Order.objects.create(transaction_id = txn_id, total_cost = total_cost )
-    # orders.transaction_id.add(txn_id)
-    # orders.total_cost.add(total_cost)
-    # orders = Order.objects.create(total_cost = total_cost )
-
     orders.save()
 
+    # assign to user profile
+    id = session["client_reference_id"]
+    # userid = get_object_or_404(pk=id)
+    profile = Profile.objects.get(user=id)
+    profile.orders.add(orders)
 
 
     print(txn_id)
     print(productcount)
     print(total_cost)
+    # print(userid)

@@ -16,6 +16,6 @@ class Order(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     wishlist = models.ManyToManyField(Trip)
-    orders = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    orders = models.ManyToManyField(Order)
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
