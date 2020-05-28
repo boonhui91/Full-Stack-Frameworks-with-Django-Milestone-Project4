@@ -8,3 +8,6 @@ def display_home(request):
     return render(request, 'home/home.template.html',{
         'trips':trips
     })
+
+def handler404(request, exception):
+       return render(request, 'home/404.html')

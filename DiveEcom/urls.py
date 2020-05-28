@@ -30,3 +30,5 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profile/', include('useraccount.urls')),
 ]
+
+handler404 = home.views.handler404
