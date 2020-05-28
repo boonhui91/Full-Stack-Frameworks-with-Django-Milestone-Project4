@@ -27,7 +27,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'p@*bt=4y5cx$k_t2hh=+27-76kw8zmr6wn-fr5g@j(5s0eodw9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['bh-deepblue.herokuapp.com', '*']
 

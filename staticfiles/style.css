@@ -1,0 +1,365 @@
+/* NAV BAR */
+/* for laptop and computer screen */
+@media only screen and (min-width: 768px) {
+    .sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    }
+
+    .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    }
+
+    .sidenav a:hover {
+    color: #f1f1f1;
+    }
+
+    .main {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    }
+
+    .sidenav h3 {
+        color: teal;
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        display: block;
+    }
+
+    @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    }
+
+    /* hides nav bar open and close button when in large screen size */
+    .nav-mobile {
+        visibility: hidden;
+    }
+}
+
+/* for mobile screen */
+@media only screen and (max-width: 768px) {
+    .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    }
+
+    .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+    color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    }
+
+    .sidenav h3 {
+        color: teal;
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        display: block;
+    }
+
+    .nav-mobile{
+        position: absolute;
+        z-index: 1;
+    }
+
+    @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    }
+}
+/* END OF NAV BAR */
+
+
+#homepage {
+    width: 100%;
+    height: 100%;
+    /* margin-left: 0; */
+    background-image: url('images/boat.gif');
+    background-size:cover;
+    position: fixed;
+    top: 0px;
+    z-index: 0;
+}
+
+.intro {
+    width: 100%;
+}
+
+/* Get Started ICON */
+.wrapper{
+  position: fixed;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+
+.link_wrapper{
+  position: relative;
+}
+
+.link_wrapper a{
+  display: block;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #333;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid #333;
+  transition: all .35s;
+  opacity: 50%;
+}
+
+.icon{
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 0;
+  top: 0;
+  z-index: -1;
+  transition: all .35s;
+}
+
+.icon svg{
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  transform: rotate(-45deg);
+  fill: #2ecc71;
+  transition: all .35s;
+}
+
+.link_wrapper a:hover{
+  width: 200px;
+  border: 3px solid #2ecc71;
+  background: transparent;
+  color: #2ecc71;
+}
+
+.link_wrapper a:hover + .icon{
+  border: 3px solid #2ecc71;
+  right: -25%;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper{
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.link_wrapper a{
+  display: block;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #333;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid #333;
+  transition: all .35s;
+  opacity: 50%;
+}
+
+}
+/* end of get started ICON */
+
+
+/* all trips cards */
+@media (min-width: 768px) {
+  /* show 3 items */
+  .carousel-inner .active,
+  .carousel-inner .active + .carousel-item,
+  .carousel-inner .active + .carousel-item + .carousel-item {
+    display: block;
+  }
+
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+  .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+    transition: none;
+  }
+
+  .carousel-inner .carousel-item-next,
+  .carousel-inner .carousel-item-prev {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+    position: absolute;
+    top: 0;
+    right: -33.3333%;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+
+  .img-fluid{
+    min-height: 250px;
+    max-height: 250px;
+}
+
+.alltrip-card-body {
+    min-height: 380px;
+    max-height: 380px;
+}
+
+  /* left or forward direction */
+  .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+  .carousel-item-next.carousel-item-left + .carousel-item,
+  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+  .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+    position: relative;
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  /* farthest right hidden item must be abso position for animations */
+  .carousel-inner .carousel-item-prev.carousel-item-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: block;
+    visibility: visible;
+  }
+
+  /* right or prev direction */
+  .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+  .carousel-item-prev.carousel-item-right + .carousel-item,
+  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+  .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+    position: relative;
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+    display: block;
+    visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+.container-fluid {
+    margin-right: 25px;
+    width: 80%;
+}
+}
+
+.carousel-control-next-icon {
+    background-image: url('images/next.png');
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 1px;
+}
+
+.carousel-control-prev-icon {
+    background-image: url('images/previous.png');
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 1px;
+}
+/* end of all trips card */
+
+
+.trip-button a {
+    color: black;
+    font-weight:bold;
+}
+
+.checkout-btn a {
+    color: black;
+    font-weight:bold;
+}
+
+
+/* empty cart */
+.empty-cart {
+    margin-left: 130px;
+    padding-top:50px;
+}
+@media only screen and (min-width: 768px) {
+.empty-cart {
+    margin-left: 300px;
+}
+#cart-summary {
+    margin-left: 300px;
+}
+
+.trip-desc {
+    width: 500px;
+    margin-left: 470px;
+}
+}
+
+.prev-vendor, .next-vendor {
+    max-height: 300px;
+}
+
+.brand-logo {
+    padding-bottom: 20px;
+}
+
+.inline-block {
+   display: inline-block;
+}
+
+.user-displayname {
+    padding-left: 25px;
+}
+
+.profile-user-photo {
+    max-height: 30px;
+
+}
