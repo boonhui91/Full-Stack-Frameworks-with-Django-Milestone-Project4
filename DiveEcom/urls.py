@@ -23,15 +23,10 @@ import useraccount.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    # path('trips/', trips.views.all_trip, name = 'all_trip_route'),
-    # path('trips/update/<trip_id>', trips.views.update_trip, name = 'update_trip_route'),
-    # path('trips/delete/<trip_id>', trips.views.delete_trip, name = 'delete_trip_route'),
     path('trips/', include('trips.urls')),
     path('vendors/', trips.views.read_create_trip, name = 'index_trip_route'),
     path('', home.views.display_home, name='home_route'),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
-    # path('addwishlist/<trip_id>', useraccount.views.addwishlist, name='add_wishlist'),
-    # path('history/', useraccount.views.order_history, name='history'),
     path('profile/', include('useraccount.urls')),
 ]

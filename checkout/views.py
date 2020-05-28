@@ -50,7 +50,7 @@ def checkout(request):
 def checkout_success(request):
     # reset the shopping cart
     request.session['shopping_cart'] = {}
-    return redirect(reverse('home_route'))
+    return render(request, 'checkout/success.template.html')
 
 def checkout_cancelled(request):
     return render(request, 'cart/emptycart.template.html')
