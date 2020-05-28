@@ -16,7 +16,7 @@
     <h5 class="card-title">Location: {{cart_item.location}}</h5>
     <p class="card-text">Date: {{cart_item.date}}</p>
     <p class="card-text">Cost: ${{cart_item.price}}</p>
-    <p class="card-text">Quantity: {{cart_item.qty}}</p>
+    <p class="card-text">Pax: {{cart_item.qty}}</p>
     <a class="btn btn-danger btn-sm" href="{% url 'delete_cart_route' trip_id=cart_item.id %}">Delete Item</a>
     <a class="btn btn-danger btn-sm" href="{% url 'delete_qty_route' trip_id=cart_item.id %}">-</a>
     <a class="btn btn-danger btn-sm" href="{% url 'add_qty_route' trip_id=cart_item.id %}">+</a>
@@ -24,7 +24,7 @@
     <p>
         <form method="POST" action="{% url 'update_qty_route' trip_id=cart_item.id %}">
         {%csrf_token%}
-        Quantity:<input name="qty" type="text" value="{{cart_item.qty}}" style="width:20px">
+        Pax:<input name="qty" type="text" value="{{cart_item.qty}}" style="width:20px">
         <input type="submit" class="btn btn-primary btn-sm" value="Update Quantity"/>
         </form>
     </p>

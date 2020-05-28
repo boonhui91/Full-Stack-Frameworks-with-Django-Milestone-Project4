@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'pyuploadcare.dj',
+    'crispy_forms',
     'trips',
     'vendors',
     'useraccount',
@@ -180,6 +181,8 @@ UPLOADCARE = {
     'pub_key': os.environ.get('UPLOADCARE_PUBLIC_KEY'),
     'secret': os.environ.get('UPLOADCARE_SECRET_KEY')
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
