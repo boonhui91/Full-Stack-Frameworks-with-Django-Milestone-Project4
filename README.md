@@ -54,24 +54,25 @@ The wireframe helps me to visualise the page layout. It can be viewed [here](res
 * During registration, user is able to select the account type to sign up - Customer/Vendor
 * A confirmation email will be sent to email address
 
-### 2. Vendor
+### 3. Vendor
 * As a vendor, user will be able to access the 'Vendor' tab on the Nav Bar.
 * CRUD functionalities for vendors to post their Dive packages
 
-### 2. Customer
+### 4. Customer
 * As a customer, user will be able to view all trips, add to cart or add to wishlist any of the trip.
 * User can do a search for a specific trip containing the search keyword
 * User will be able to delete items off wishlist, wishlist can be access through the icon beside Username shown on the Nav Bar
 
-### 3. Cart and checking out
+### 5. Cart and checking out
 * Trips can be added to cart
 * User is able to view all items in cart
 * Quantity of items can be adjusted in cart
 * Cart will show the total cost of all items
 * Upon checkout, user will be directed to Stripe payment
 
-### 4. Testing accounts
+### 6. Testing accounts
 |Type| User | Password |
+|------ | ------ | ------ |
 |Vendor| johndoe | django123 |
 |Customer| bluescuba | django123 |
 
