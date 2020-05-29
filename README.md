@@ -44,6 +44,8 @@ The sitemap was created to help me conceptualise the User Flow when visiting the
 
 The wireframe helps me to visualise the page layout. It can be viewed [here](resources/wireframe.png).
 
+The ER Diagram helps me to visualise the data structure. It can be viewed [here](resources/ER-Diagram.jpg).
+
 # FEATURES
 
 ### 1. Landing Page
