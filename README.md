@@ -75,8 +75,8 @@ The ER Diagram helps me to visualise the data structure. It can be viewed [here]
 ### 6. Testing accounts
 |Type| User | Password |
 |------ | ------ | ------ |
-|Vendor| johndoe | django123 |
-|Customer| bluescuba | django123 |
+|Customer| johndoe | django123 |
+|Vendor| bluescuba | django123 |
 
 ## FUTURE FEATURES
 * User to be able to filter by dates
