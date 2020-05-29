@@ -10,7 +10,7 @@ def addwishlist(request, trip_id):
     wishlist_trip = Trip.objects.get(pk=trip_id)
     profile.wishlist.add(wishlist_trip)
 
-    return redirect(reverse('home_route'))
+    return redirect(reverse('view_wishlist'))
 
 
 @login_required
