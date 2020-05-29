@@ -170,19 +170,19 @@
   top: calc(50% - 15px);
   left: calc(50% - 15px);
   transform: rotate(-45deg);
-  fill: #2ecc71;
+  fill: red;
   transition: all .35s;
 }
 
 .link_wrapper a:hover{
   width: 200px;
-  border: 3px solid #2ecc71;
+  border: 3px solid red;
   background: transparent;
-  color: #2ecc71;
+  color: red;
 }
 
 .link_wrapper a:hover + .icon{
-  border: 3px solid #2ecc71;
+  border: 3px solid red;
   right: -25%;
 }
 
