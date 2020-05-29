@@ -14,6 +14,7 @@
   </head>
   <body>
 
+<!-- NAV BAR -->
 <div>
     <header>
     {% if request.user.is_authenticated %}
@@ -70,6 +71,7 @@
         <span class='nav-mobile' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     {%endif%}
     </header>
+    <!-- end of NAV Bar -->
   {%block content%}
   {%endblock%}
 </div>

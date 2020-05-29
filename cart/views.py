@@ -4,14 +4,12 @@ from trips.models import Trip
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
 
 SHOPPING_CART = "shopping_cart"
 
 @login_required
 def add_cart(request, trip_id):
     cart = request.session.get(SHOPPING_CART, {})
-    # trip = get_object_or_404(Trip, pk=trip_id)
     trip = get_object_or_404(Trip, pk=trip_id)
 
     if trip_id not in cart:
@@ -70,7 +68,6 @@ def delete_item(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
     if trip_id in cart:
         del cart[trip_id]
-        # cart[trip_id]['qty'] -= 1
         request.session[SHOPPING_CART] = cart
 
     return redirect(reverse('view_cart_route'))
@@ -81,7 +78,7 @@ def delete_qty(request, trip_id):
     cart = request.session.get(SHOPPING_CART)
     if trip_id in cart:
 
-        # delete off the whole item if, item wont show as negative value
+        # delete off the whole item, item wont show as negative value
         if (cart[trip_id]['qty'] == 1):
             del cart[trip_id]
         else:

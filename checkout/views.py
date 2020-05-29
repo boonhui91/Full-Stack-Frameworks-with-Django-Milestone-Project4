@@ -26,8 +26,7 @@ def checkout(request):
                 'amount': int(trips_from_db.price*100),
                 'currency': 'SGD',
                 'quantity': trips['qty'],
-             
-            })
+             })
 
         current_site = Site.objects.get_current()
         domain = current_site.domain
@@ -86,7 +85,6 @@ def payment_completed(request):
 
 def handle_checkout_session(session, request):
     # get stripe transaction ID
-    print(session)
     txn_id = session["id"]
     # get number of different trips added
     productcount = len(session["display_items"])
@@ -108,8 +106,3 @@ def handle_checkout_session(session, request):
     profile = Profile.objects.get(user=id)
     profile.orders.add(orders)
 
-
-    print(txn_id)
-    print(productcount)
-    print(total_cost)
-    # print(userid)
